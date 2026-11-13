@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أزياء حريمي - جوميا مصر</title>
+    <!-- Bootstrap 5 RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        /* شريط Breadcrumb */
+        .breadcrumb-item a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        .breadcrumb-item.active {
+            color: #282828;
+            font-size: 13px;
+        }
+
+        /* القائمة الجانبية للفلترة (Sidebar) */
+        .filter-sidebar {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            font-size: 12px;
+        }
+
+        .filter-group {
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+
+        .filter-group:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .filter-title {
+            font-weight: bold;
+            font-size: 13px;
+            color: #282828;
+            margin-bottom: 8px;
+        }
+
+        .filter-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .filter-list li {
+            margin-bottom: 6px;
+        }
+
+        .filter-list a {
+            color: #4a4a4a;
+            text-decoration: none;
+            display: block;
+            transition: color 0.2s;
+        }
+
+        .filter-list a:hover {
+            color: #f68b1e;
+        }
+
+        .filter-search-input {
+            font-size: 11px;
+            padding: 4px 8px;
+            margin-bottom: 8px;
+        }
+
+        .form-check-label {
+            color: #4a4a4a;
+            cursor: pointer;
+        }
+
+        .form-check-input:checked {
+            background-color: #f68b1e;
+            border-color: #f68b1e;
+        }
+
+        /* كروت الأقسام الفرعية */
+        .category-section {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+
+        .category-card {
+            border-radius: 8px;
+            overflow: hidden;
+            display: block;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* قسم المنتجات الأكثر مبيعاً */
+        .products-section {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+
+        .section-header {
+            font-size: 15px;
+            font-weight: bold;
+            color: #282828;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product-item {
+            position: relative;
+            background: #fff;
+            border-radius: 6px;
+            padding: 8px;
+            transition: box-shadow 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+
+        .product-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            color: inherit;
+        }
+
+        /* شارة الخصم */
+        .discount-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: #fef3e9;
+            color: #f68b1e;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 3px;
+            z-index: 2;
+        }
+
+        .product-img-wrap {
+            width: 100%;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .product-img-wrap img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .product-title {
+            font-size: 12px;
+            color: #282828;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 4px;
+        }
+
+        .product-price {
+            font-size: 13px;
+            font-weight: bold;
+            color: #282828;
+        }
+
+        .old-price {
+            font-size: 11px;
+            color: #8e8e93;
+            text-decoration: line-through;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. البانر العلوي بالطول الكامل -->
+    <div class="container-fluid p-0 top-sticky-banner">
+        <a href="#">
+            <img src="https://eg.jumia.is/cms/Q4-2026/StickyBanner/ST1170X60arb-1.png" alt="Sticky Banner" class="w-100 img-fluid">
+        </a>
+    </div>
+
+    <!-- 2. الهيدر والـ Navbar -->
+    <header class="bg-white shadow-sm sticky-top">
+        <div class="container py-2">
+            <div class="row align-items-center g-2">
+                
+                <!-- Logo -->
+                <div class="col-auto">
+                    <a class="navbar-brand fw-bold fs-3 text-dark d-flex align-items-center" href="index.html">
+                        JUMIA <i class="fa-solid fa-star text-warning fs-6 ms-1"></i>
+                    </a>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="col">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0 text-muted">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </span>
+                        <input type="text" class="form-control border-start-0 shadow-none" placeholder="ابحث عن منتجات، والعلامات التجارية والأقسام">
+                        <button class="btn btn-jumia fw-bold px-4" type="button">البحث</button>
+                    </div>
+                </div>
+
+                <!-- Actions / Links -->
+                <div class="col-auto d-flex align-items-center gap-3">
+                    <a href="login.html" class="nav-link text-dark fw-medium fs-6">
+                        <i class="fa-regular fa-user me-1"></i> تسجيل الدخول
+                    </a>
+                    <a href="#" class="nav-link text-dark fw-medium fs-6">
+                        <i class="fa-regular fa-circle-question me-1"></i> المساعدة
+                    </a>
+                    <a href="#" class="nav-link text-dark fw-medium fs-6">
+                        <i class="fa-solid fa-cart-shopping me-1"></i> سلة التسوق
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    <!-- هيدر بسيط -->
+    <header class="bg-white py-3 border-bottom shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="index.html" class="fw-bold fs-3 text-warning text-decoration-none">JUMIA ★</a>
+            <a href="index.html" class="btn btn-outline-warning btn-sm fw-bold">
+                <i class="fa-solid fa-arrow-right ms-1"></i> العودة للرئيسية
+            </a>
+        </div>
+    </header>
+   
+    <div class="container my-3">
+        
+        <!-- المسار (Breadcrumb) -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">الصفحة الرئيسية</a></li>
+                <li class="breadcrumb-item"><a href="#">أزياء</a></li>
+                <li class="breadcrumb-item active" aria-current="page">أزياء حريمي</li>
+            </ol>
+        </nav>
+
+        <div class="row g-3">
+            
+            <!-- القائمة الجانبية (Sidebar) على اليمين -->
+            <div class="col-lg-3 col-md-4">
+                <div class="filter-sidebar">
+                    
+                    <!-- 1. الفئة -->
+                    <div class="filter-group">
+                        <div class="filter-title">الفئة</div>
+                        <ul class="filter-list ms-2">
+                            <li><a href="#">أزياء</a></li>
+                            <li class="fw-bold"><a href="#">أزياء حريمي</a></li>
+                            <li><a href="#" class="ms-2">- إكسسوارات</a></li>
+                            <li><a href="#" class="ms-2">- ملابس</a></li>
+                            <li><a href="#" class="ms-2">- شنط يد</a></li>
+                            <li><a href="#" class="ms-2">- مجوهرات</a></li>
+                            <li><a href="#" class="ms-2">- الحمل والأمومة</a></li>
+                            <li><a href="#" class="ms-2">- مقاسات كبيرة</a></li>
+                            <li><a href="#" class="ms-2">- أحذية</a></li>
+                            <li><a href="#" class="ms-2">- ملابس تقليدية وثقافية</a></li>
+                            <li><a href="#" class="ms-2">- ملابس داخلية وملايس نوم</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- 2. الماركة -->
+                    <div class="filter-group">
+                        <div class="filter-title">الماركة</div>
+                        <input type="text" class="form-control filter-search-input" placeholder="بحث...">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="brand1">
+                            <label class="form-check-label" for="brand1">3Diamonds</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="brand2">
+                            <label class="form-check-label" for="brand2">ABOAL</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="brand3">
+                            <label class="form-check-label" for="brand3">Activ</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="brand4">
+                            <label class="form-check-label" for="brand4">ADIDAS</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="brand5">
+                            <label class="form-check-label" for="brand5">AllShop</label>
+                        </div>
+                    </div>
+
+                    <!-- 3. اللون -->
+                    <div class="filter-group">
+                        <div class="filter-title">اللون</div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="color1">
+                            <label class="form-check-label" for="color1">Beige</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="color2">
+                            <label class="form-check-label" for="color2">Black</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="color3">
+                            <label class="form-check-label" for="color3">Blue</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="color4">
+                            <label class="form-check-label" for="color4">Bronze</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="color5">
+                            <label class="form-check-label" for="color5">Brown</label>
+                        </div>
+                    </div>
+
+                    <!-- 4. النوع -->
+                    <div class="filter-group">
+                        <div class="filter-title">النوع</div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gender1">
+                            <label class="form-check-label" for="gender1">Boys</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gender2">
+                            <label class="form-check-label" for="gender2">Female</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gender3">
+                            <label class="form-check-label" for="gender3">Girls</label>
+                        </div>
+                    </div>
+
+                    <!-- 5. السعر -->
+                    <div class="filter-group">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="filter-title mb-0">السعر (جنيه)</span>
+                            <button class="btn btn-link p-0 text-warning text-decoration-none fw-bold" style="font-size:11px;">تطبيق</button>
+                        </div>
+                        <input type="range" class="form-range" min="0" max="100000" id="priceRange">
+                        <div class="d-flex align-items-center gap-1 mt-1">
+                            <input type="number" class="form-control p-1 text-center" value="1" style="font-size:11px;">
+                            <span>-</span>
+                            <input type="number" class="form-control p-1 text-center" value="100000" style="font-size:11px;">
+                        </div>
+                    </div>
+
+                    <!-- 6. نسبة الخصم -->
+                    <div class="filter-group">
+                        <div class="filter-title">نسبة الخصم</div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="discount" id="disc1">
+                            <label class="form-check-label" for="disc1">50% أو أكثر</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="discount" id="disc2">
+                            <label class="form-check-label" for="disc2">40% أو أكثر</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="discount" id="disc3">
+                            <label class="form-check-label" for="disc3">30% أو أكثر</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="discount" id="disc4">
+                            <label class="form-check-label" for="disc4">20% أو أكثر</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="discount" id="disc5">
+                            <label class="form-check-label" for="disc5">10% أو أكثر</label>
+                        </div>
+                    </div>
+
+                    <!-- 7. المقاس -->
+                    <div class="filter-group">
+                        <div class="filter-title">المقاس</div>
+                        <input type="text" class="form-control filter-search-input" placeholder="بحث...">
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="size1"><label class="form-check-label" for="size1">2XL</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="size2"><label class="form-check-label" for="size2">3XL</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="size3"><label class="form-check-label" for="size3">S</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="size4"><label class="form-check-label" for="size4">M</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="size5"><label class="form-check-label" for="size5">L</label></div>
+                    </div>
+
+                    <!-- 8. الضمانات والخدمات -->
+                    <div class="filter-group">
+                        <div class="filter-title">الخدمات</div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="express">
+                            <label class="form-check-label text-warning fw-bold" for="express"><i class="fa-solid fa-truck-fast"></i> JUMIA Express</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="freeShip">
+                            <label class="form-check-label" for="freeShip">شحن مجاني</label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- محتوى الصفحة الرئيسي على اليسار -->
+            <div class="col-lg-9 col-md-8">
+                
+                <!-- كروت شبكة الأقسام الفرعية -->
+                <div class="category-section mb-4">
+                    <h4 class="fw-bold mb-3 text-dark text-center">استعدي للصيف!</h4>
+
+                    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-2">
+                        <div class="col">
+                            <a href="#" class="category-card">
+                                <img src="https://eg.jumia.is/cms/Q3-2026/FashionRevamp/Women/AR/TopsENG.png" alt="توب وتيشيرت">
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="#" class="category-card">
+                                <img src="https://eg.jumia.is/cms/Q3-2026/FashionRevamp/Women/AR/DressesENG.png" alt="فساتين">
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="#" class="category-card">
+                                <img src="https://eg.jumia.is/cms/Q3-2026/FashionRevamp/Women/AR/BlousesENG.png" alt="بلوزات">
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="#" class="category-card">
+                                <img src="https://eg.jumia.is/cms/Q3-2026/FashionRevamp/Women/AR/BottomsENG.png" alt="بنطلونات وجينز">
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="#" class="category-card">
+                                <img src="https://eg.jumia.is/cms/Q3-2026/FashionRevamp/Women/AR/SneakersENG.png" alt="سنيكرز">
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="#" class="category-card">
+                                <img src="https://eg.jumia.is/cms/Q3-2026/FashionRevamp/Women/AR/AccessoriesEng.png" alt="إكسسوارات">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم المنتجات الأكثر مبيعاً مع الكود -->
+                <div class="products-section mb-4">
+                    <div class="section-header text-end">
+                        استخدم الكود : <span class="fw-bold text-danger">OF100</span> خصم إضافي 100 جـ | الأكثر مبيعاً
+                    </div>
+
+                    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-6 g-2">
+                        
+                        <!-- منتج 1 -->
+                        <div class="col">
+                            <a href="#" class="product-item">
+                                <span class="discount-badge">-40%</span>
+                                <div class="product-img-wrap">
+                                    <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/80/4897431/1.jpg?8708" alt="Running Shoes">
+                                </div>
+                                <div class="product-title">...7 Running Shoes - White</div>
+                                <div class="product-price">2,778.00 جنيه</div>
+                                <div class="old-price">4,599.00 جنيه</div>
+                            </a>
+                        </div>
+
+                        <!-- منتج 2 -->
+                        <div class="col">
+                            <a href="#" class="product-item">
+                                <span class="discount-badge">-48%</span>
+                                <div class="product-img-wrap">
+                                    <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/08/1026431/1.jpg?8011" alt="Short Sleeve Shirt">
+                                </div>
+                                <div class="product-title">...oplin Short Sleeve Shirt</div>
+                                <div class="product-price">671.00 جنيه</div>
+                                <div class="old-price">1,299.00 جنيه</div>
+                            </a>
+                        </div>
+
+                        <!-- منتج 3 -->
+                        <div class="col">
+                            <a href="#" class="product-item">
+                                <span class="discount-badge">-25%</span>
+                                <div class="product-img-wrap">
+                                    <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/43/2738431/1.jpg?7798" alt="شنطة">
+                                </div>
+                                <div class="product-title">Amara شنطة مناسبة للصيف...</div>
+                                <div class="product-price">300.00 جنيه</div>
+                                <div class="old-price">400.00 جنيه</div>
+                            </a>
+                        </div>
+
+                        <!-- منتج 4 -->
+                        <div class="col">
+                            <a href="#" class="product-item">
+                                <span class="discount-badge">-55%</span>
+                                <div class="product-img-wrap">
+                                    <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/04/111184/1.jpg?2839" alt="أحذية باليرينا">
+                                </div>
+                                <div class="product-title">Glitter أحذية باليرينا نسائية...</div>
+                                <div class="product-price">234.00 جنيه</div>
+                                <div class="old-price">520.00 جنيه</div>
+                            </a>
+                        </div>
+
+                        <!-- منتج 5 -->
+                        <div class="col">
+                            <a href="#" class="product-item">
+                                <span class="discount-badge">-48%</span>
+                                <div class="product-img-wrap">
+                                    <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/62/8175431/1.jpg?8832" alt="Fit Crew Neck Dress">
+                                </div>
+                                <div class="product-title">...ular Fit Crew Neck Dress</div>
+                                <div class="product-price">523.00 جنيه</div>
+                                <div class="old-price">999.00 جنيه</div>
+                            </a>
+                        </div>
+
+                        <!-- منتج 6 -->
+                        <div class="col">
+                            <a href="#" class="product-item">
+                                <span class="discount-badge">-41%</span>
+                                <div class="product-img-wrap">
+                                    <img src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/28/413993/1.jpg?4129" alt="طقم بيجامة نسائي">
+                                </div>
+                                <div class="product-title">Caesar طقم بيجامة نسائي...</div>
+                                <div class="product-price">317.00 جنيه</div>
+                                <div class="old-price">500.00 جنيه</div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- ==================== Jumia Footer Section (Full Width) ==================== -->
+<footer style="direction: rtl !important; background-color: #313133; color: #ffffff; font-family: sans-serif; font-size: 12px; line-height: 1.5; width: 100vw; margin-right: calc(-50vw + 50%); margin-left: calc(-50vw + 50%);">
+
+    <!-- 1. Section Top (Newsletter & App Section) -->
+    <div style="background-color: #282828; padding: 20px 5%; border-bottom: 1px solid #3b3b3b; width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 20px;">
+            
+            <!-- Right / Logo & App Download -->
+            <div style="display: flex; align-items: flex-start; gap: 15px;">
+                <div style="display: flex; align-items: center; gap: 5px;">
+                    <span style="font-size: 22px; font-weight: bold; letter-spacing: 1px; color: #ffffff;">JUMIA</span>
+                    <span style="background-color: #f68b1e; color: #ffffff; border-radius: 50%; width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold;">★</span>
+                </div>
+                <div>
+                    <div style="font-weight: bold; font-size: 12px; margin-bottom: 3px;">تنزيل تطبيق جوميا المجاني</div>
+                    <div style="color: #999999; font-size: 11px; margin-bottom: 8px;">احصل على العديد من العروض الحصرية!</div>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="#" style="background: #000; color: #fff; text-decoration: none; padding: 4px 8px; border-radius: 4px; font-size: 10px; border: 1px solid #555;">App Store</a>
+                        <a href="#" style="background: #000; color: #fff; text-decoration: none; padding: 4px 8px; border-radius: 4px; font-size: 10px; border: 1px solid #555;">Google Play</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left / Subscription Form -->
+            <div style="max-width: 600px; flex: 1;">
+                <div style="font-weight: bold; font-size: 12px; margin-bottom: 4px;">هل أنت جديد على جوميا؟</div>
+                <div style="color: #cccccc; font-size: 11px; margin-bottom: 8px;">
+                    اشترك في نشرتنا الإخبارية للحصول على تحديثات حول أحدث عروضنا. يمكنك إلغاء الاشتراك في أي وقت كما هو موضح في سياسة الخصوصية.
+                </div>
+                
+                <div style="color: #f68b1e; font-size: 11px; font-weight: bold; margin-bottom: 6px;">
+                    للاشتراك في نشرتنا الإخبارية يجب عليك أولاً قراءة والموافقة على شروط خدمة جوميا والموافقة على الشروط القانونية
+                </div>
+
+                <form style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <input type="checkbox" id="agree_terms" checked style="accent-color: #f68b1e;">
+                        <label for="agree_terms" style="color: #cccccc; font-size: 10px;">
+                            أوافق على سياسة الخصوصية وملفات تعريف الارتباط الخاصة بـ جوميا، وأعلم أنه يمكنني إلغاء الاشتراك في الرسائل الإخبارية في أي وقت.
+                        </label>
+                    </div>
+
+                    <div style="display: flex; gap: 8px; width: 100%; max-width: 400px;">
+                        <input type="email" placeholder="أدخل بريدك الإلكتروني" style="flex: 1; padding: 6px 10px; border: 1px solid #ccc; border-radius: 2px; font-size: 11px; outline: none; background: #fff; color: #333;">
+                        <button type="submit" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 6px 16px; border-radius: 2px; font-size: 11px; cursor: pointer; font-weight: bold;">اشترك</button>
+                    </div>
+                </form>
+
+                <div style="color: #999999; font-size: 10px; margin-top: 8px;">
+                    يمكنك إلغاء الاشتراك في أي وقت كما هو موضح في سياسة الخصوصية
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 2. Main Links Columns Section -->
+    <div style="padding: 30px 5%; width: 100%; box-sizing: border-box;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; text-align: right;">
+            
+            <!-- العمود 1: تحتاج مساعدة؟ -->
+            <div style="min-width: 160px;">
+                <div style="font-weight: bold; margin-bottom: 10px; font-size: 12px; color: #ffffff;">تحتاج مساعدة؟</div>
+                <ul style="list-style: none; padding: 0; margin: 0; color: #b3b3b3; font-size: 11px; line-height: 1.8;">
+                    <li><a href="#" style="color: inherit; text-decoration: none;">تواصل معنا</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">مركز المساعدة</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">اتصل بنا</a></li>
+                    <li style="margin-top: 10px; font-weight: bold; color: #ffffff;">روابط مفيدة:</li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">كيفية عمل طلب شراء</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">طرق الدفع</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">سياسة الشحن</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">سياسة الاسترجاع</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">سياسة الاستبدال</a></li>
+                    <li><a href="#" style="color: #f68b1e; text-decoration: none;">إرشادات عن المعلومات العامة بالدفع</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">عروض البلاك فرايداي</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">عروض عيد ميلاد جوميا</a></li>
+                </ul>
+            </div>
+
+            <!-- العمود 2: من نحن -->
+            <div style="min-width: 140px;">
+                <div style="font-weight: bold; margin-bottom: 10px; font-size: 12px; color: #ffffff;">من نحن</div>
+                <ul style="list-style: none; padding: 0; margin: 0; color: #b3b3b3; font-size: 11px; line-height: 1.8;">
+                   <li><a href="about.html" style="color: inherit; text-decoration: none;">عن جوميا</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">الشروط والأحكام</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">سياسة الخصوصية</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">سياسة ملفات تعريف الارتباط</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">توصيل مجاني</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">فلاش سيل</a></li>
+                </ul>
+            </div>
+
+            <!-- العمود 3: زوّد مبيعاتك -->
+            <div style="min-width: 160px;">
+                <div style="font-weight: bold; margin-bottom: 10px; font-size: 12px; color: #ffffff;">زوّد مبيعاتك</div>
+                <ul style="list-style: none; padding: 0; margin: 0; color: #b3b3b3; font-size: 11px; line-height: 1.8;">
+                    <li><a href="#" style="color: inherit; text-decoration: none;">بيع على جوميا</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">الخدمة اللوجستية للتاجر (Vendor Hub)</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">ابدأ بيع مع جوميا (JPay)</a></li>
+                </ul>
+            </div>
+
+            <!-- العمود 4: جوميا دولياً -->
+            <div style="min-width: 180px;">
+                <div style="font-weight: bold; margin-bottom: 10px; font-size: 12px; color: #ffffff;">جوميا دولياً</div>
+                <div style="display: flex; gap: 20px;">
+                    <ul style="list-style: none; padding: 0; margin: 0; color: #b3b3b3; font-size: 11px; line-height: 1.8;">
+                        <li><a href="#" style="color: inherit; text-decoration: none;">ساحل العاج</a></li>
+                        <li><a href="#" style="color: inherit; text-decoration: none;">غانا</a></li>
+                        <li><a href="#" style="color: inherit; text-decoration: none;">كينيا</a></li>
+                        <li><a href="#" style="color: inherit; text-decoration: none;">المغرب</a></li>
+                    </ul>
+                    <ul style="list-style: none; padding: 0; margin: 0; color: #b3b3b3; font-size: 11px; line-height: 1.8;">
+                        <li><a href="#" style="color: inherit; text-decoration: none;">نيجيريا</a></li>
+                        <li><a href="#" style="color: inherit; text-decoration: none;">السنغال</a></li>
+                        <li><a href="#" style="color: inherit; text-decoration: none;">أوغندا</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 3. Contact Info Section -->
+        <div style="margin-top: 30px; text-align: center; color: #b3b3b3; font-size: 11px; line-height: 1.6;">
+            <div style="font-weight: bold; color: #ffffff; margin-bottom: 4px;">تواصل معنا</div>
+            <div>الاسم التجاري: <span style="color: #ffffff;">Jumia Egypt</span></div>
+            <div>العنوان: 15 Tasaween El Shamaly St., Sector 2, 5th Compound, New Cairo, Behind Dusk The Office Building, Cairo 271 / 272</div>
+            <div>رقم الهاتف: 19586</div>
+            <div>واتساب: 201011988880+</div>
+        </div>
+
+        <!-- 4. Payment & Social Media Section -->
+        <div style="margin-top: 25px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-top: 1px solid #3b3b3b; padding-top: 15px; gap: 15px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="color: #b3b3b3; font-size: 11px;">طرق الدفع:</span>
+                <span style="font-size: 10px; color: #ccc; border: 1px solid #666; padding: 2px 4px; border-radius: 2px;">fawry</span>
+                <span style="font-size: 10px; color: #ccc; border: 1px solid #666; padding: 2px 4px; border-radius: 2px;">VISA</span>
+                <span style="font-size: 10px; color: #ccc; border: 1px solid #666; padding: 2px 4px; border-radius: 2px;">MasterCard</span>
+                <span style="font-size: 10px; color: #ccc; border: 1px solid #666; padding: 2px 4px; border-radius: 2px;">Cash</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="color: #b3b3b3; font-size: 11px;">تابعونا على:</span>
+                <a href="#" style="color: #ccc; text-decoration: none;">🎵</a>
+                <a href="#" style="color: #ccc; text-decoration: none;">📸</a>
+                <a href="#" style="color: #ccc; text-decoration: none;">▶</a>
+                <a href="#" style="color: #ccc; text-decoration: none;">𝕏</a>
+                <a href="#" style="color: #ccc; text-decoration: none;">f</a>
+            </div>
+        </div>
+
+        <!-- 5. Brands List -->
+        <div style="margin-top: 25px; border-top: 1px solid #3b3b3b; padding-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; color: #888888; font-size: 10px;">
+            <span>Solary</span>
+            <span>TORNADO</span>
+            <span>XIAOMI</span>
+            <span>OPPO</span>
+            <span>Samsung</span>
+            <span>SHEIN</span>
+            <span>Masary</span>
+            <span>NIVEA</span>
+            <span>Nestle</span>
+            <span>LC Waikiki</span>
+            <span>Lenovo</span>
+            <span>Maybelline New York</span>
+            <span>HP</span>
+            <span>Ikea</span>
+            <span>KOTY</span>
+            <span>L'Oreal Paris</span>
+            <span>DeFacto</span>
+            <span>Dior</span>
+            <span>Fresh</span>
+            <span>Carrier</span>
+            <span>Apple</span>
+            <span>Braun</span>
+            <span>Casio</span>
+            <span>Goldi</span>
+            <span>Aditi</span>
+            <span>ADIDAS</span>
+            <span>American Eagle</span>
+            <span>Andora</span>
+        </div>
+
+        <!-- 6. Bottom Copyright & Language Selection -->
+        <div style="margin-top: 20px; border-top: 1px solid #3b3b3b; padding-top: 15px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #888888;">
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <a href="#" style="color: #888888; text-decoration: none;">English</a>
+                <span>|</span>
+                <a href="#" style="color: #ffffff; font-weight: bold; text-decoration: none;">عربي</a>
+            </div>
+            <div>
+                <a href="#" style="color: #888888; text-decoration: none;">Privacy</a>
+            </div>
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

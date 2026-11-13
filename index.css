@@ -1,0 +1,153 @@
+/* إعدادات وتخصيصات Bootstrap لجوميا */
+body {
+    background-color: #f5f5f5;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 1. البانر العلوي sticky ممتد بعرض الشاشة */
+.top-sticky-banner {
+    background-color: #f68b1e;
+}
+
+.top-sticky-banner img {
+    max-height: 60px;
+    object-fit: cover;
+}
+
+/* 2. زر البحث ولون جوميا البرتقالي المميز */
+.btn-jumia {
+    background-color: #f68b1e;
+    color: #ffffff;
+    border-color: #f68b1e;
+}
+
+.btn-jumia:hover {
+    background-color: #e07b16;
+    color: #ffffff;
+}
+
+.input-group .form-control:focus {
+    border-color: #f68b1e;
+}
+
+/* 2.1 شريط الأقسام والـ Mega Menu */
+.categories-nav {
+    font-size: 13px;
+}
+
+.category-list .nav-link {
+    padding: 6px 10px;
+    transition: color 0.2s ease-in-out;
+}
+
+.category-list .nav-link:hover {
+    color: #f68b1e !important;
+}
+
+.fs-7 {
+    font-size: 0.85rem;
+}
+
+.fs-8 {
+    font-size: 0.75rem;
+}
+
+/* Mega Menu Dropdown Styling */
+.has-megamenu {
+    position: static !important;
+}
+
+.megamenu-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 1050;
+    border-top: 2px solid #f68b1e;
+}
+
+/* إظهار الميجا منيو عند الوقوف بالماوس */
+.has-megamenu:hover .megamenu-dropdown {
+    display: block;
+}
+
+.megamenu-col h6 {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.megamenu-col ul li {
+    margin-bottom: 6px;
+}
+
+.megamenu-col ul li a {
+    text-decoration: none;
+    color: #555555;
+    font-size: 12px;
+    transition: color 0.2s ease;
+}
+
+.megamenu-col ul li a:hover {
+    color: #f68b1e;
+    padding-right: 3px;
+}
+
+/* 3. ارتفاع السلايدر الرئيسي */
+.hero-slider {
+    height: 380px;
+}
+
+/* تخصيص نقاط السلايدر (Indicators) */
+.carousel-indicators [data-bs-target] {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    opacity: 0.7;
+}
+
+.carousel-indicators .active {
+    background-color: #f68b1e;
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* 4. شريط الخدمات الأيقونات */
+.border-orange-top {
+    border-top: 3px solid #f68b1e;
+}
+
+.feature-card-item {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card-item:hover {
+    transform: translateY(-4px);
+    background-color: #fbfbfb;
+}
+
+.feature-card-item img {
+    max-height: 80px;
+    object-fit: contain;
+}
+
+/* 5. قسم آخر منتجات شوفتها */
+.recent-products-section {
+    background-color: #535357;
+}
+
+.product-card {
+    transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.03);
+}
+
+.product-img {
+    height: 130px;
+    object-fit: contain;
+}

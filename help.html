@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مركز المساعدة - جوميا</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        /* Header Navigation */
+        .header-main { background-color: #fff; border-bottom: 1px solid #e5e5e5; }
+        .logo { font-size: 26px; font-weight: 900; color: #000; text-decoration: none; }
+        .logo span { color: #f68b1e; }
+        
+        .search-btn {
+            background-color: #f68b1e;
+            color: #fff;
+            border: none;
+            box-shadow: 0 2px 4px rgba(246, 139, 30, 0.2);
+        }
+        .search-btn:hover { background-color: #e07b16; color: #fff; }
+
+        /* Orange Banner */
+        .help-banner {
+            background-color: #fcdab7;
+            padding: 30px 0 60px 0;
+            text-align: center;
+        }
+
+        /* Quick Action Cards */
+        .quick-cards-container {
+            margin-top: -40px;
+            margin-bottom: 30px;
+        }
+        .quick-card {
+            background-color: #fff;
+            border-radius: 4px;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: transform 0.2s;
+            border: 1px solid #eee;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .quick-card:hover {
+            transform: translateY(-3px);
+            border-color: #f68b1e;
+        }
+
+        /* Search Input Box */
+        .faq-search-box {
+            background: #fff;
+            border-radius: 4px;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            margin-bottom: 25px;
+        }
+
+        /* Side Category Menu */
+        .category-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+        .category-item {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #555;
+            transition: all 0.2s;
+        }
+        .category-item:last-child { border-bottom: none; }
+        .category-item:hover, .category-item.active {
+            color: #f68b1e;
+            background-color: #fffaf5;
+            font-weight: bold;
+        }
+
+        /* Accordion Questions List */
+        .faq-container {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 10px 20px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        .faq-item:last-child { border-bottom: none; }
+
+        .faq-question {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #222;
+        }
+        .faq-question .badge-category {
+            font-size: 10px;
+            color: #888;
+            display: block;
+            margin-bottom: 4px;
+            font-weight: normal;
+        }
+
+        .faq-answer {
+            display: none;
+            padding-top: 12px;
+            padding-right: 20px;
+            font-size: 13px;
+            color: #555;
+            line-height: 1.8;
+        }
+        .faq-answer ul {
+            padding-right: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Live Chat Box Footer */
+        .chat-agent-box {
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="header-main sticky-top py-2">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="about.html" class="logo"><span>★</span> JUMIA</a>
+            
+            <div class="input-group w-50">
+                <input type="text" class="form-control" placeholder="البحث عن منتجات، والعلامات التجارية والأقسام">
+                <button class="btn search-btn px-4">البحث</button>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <a href="#" class="text-dark text-decoration-none fw-bold small"><i class="fa-regular fa-user me-1"></i> تسجيل الدخول</a>
+                <a href="#" class="text-dark text-decoration-none fw-bold small"><i class="fa-regular fa-circle-question me-1"></i> المساعدة</a>
+                <a href="shop-now.html" class="text-dark text-decoration-none fw-bold small"><i class="fa-solid fa-cart-shopping me-1"></i> سلة التسوق</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Orange Help Banner -->
+    <section class="help-banner">
+        <div class="container">
+            <h5 class="fw-bold mb-1">مركز المساعدة</h5>
+            <h3 class="fw-bold">مرحباً، كيف يمكننا مساعدتك؟</h3>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Quick Action Buttons -->
+        <div class="row g-3 quick-cards-container">
+            <div class="col-6 col-md-3">
+                <div class="quick-card">
+                    <i class="fa-solid fa-box-open text-warning fs-5"></i>
+                    <span>عمل طلب</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="quick-card">
+                    <i class="fa-solid fa-truck-fast text-warning fs-5"></i>
+                    <span>تتبع طلبك</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="quick-card">
+                    <i class="fa-solid fa-xmark text-warning fs-5"></i>
+                    <span>إلغاء منتج أو طلب</span>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="quick-card">
+                    <i class="fa-solid fa-rotate-left text-warning fs-5"></i>
+                    <span>عمل طلب إرجاع</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="faq-search-box">
+            <div class="input-group">
+                <span class="input-group-text bg-white border-0"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
+                <input type="text" id="searchInput" class="form-control border-0" placeholder="اكتب كلمات مثل 'الاسترجاع'">
+            </div>
+        </div>
+
+        <!-- Content Area: Sidebar + FAQ Items -->
+        <div class="row g-4 mb-5">
+            
+            <!-- Side Categories Menu -->
+            <div class="col-md-3">
+                <ul class="category-list">
+                    <li class="category-item active" data-category="pay"><span class="category-title">الدفع</span> <i class="fa-solid fa-angle-left small"></i></li>
+                    <li class="category-item" data-category="vouchers"><span class="category-title">قسائم الشراء</span> <i class="fa-solid fa-angle-left small"></i></li>
+                    <li class="category-item" data-category="products"><span class="category-title">المنتجات</span> <i class="fa-solid fa-angle-left small"></i></li>
+                    <li class="category-item" data-category="shipping"><span class="category-title">التوصيل</span> <i class="fa-solid fa-angle-left small"></i></li>
+                    <li class="category-item" data-category="orders"><span class="category-title">طلبك</span> <i class="fa-solid fa-angle-left small"></i></li>
+                    <li class="category-item" data-category="returns"><span class="category-title">الاسترجاع والاسترداد</span> <i class="fa-solid fa-angle-left small"></i></li>
+                    <li class="category-item" data-category="account"><span class="category-title">الحساب</span> <i class="fa-solid fa-angle-left small"></i></li>
+                    <li class="category-item" data-category="sell"><span class="category-title">بيع على جوميا</span> <i class="fa-solid fa-angle-left small"></i></li>
+                </ul>
+            </div>
+
+            <!-- FAQ Accordion List -->
+            <div class="col-md-9">
+                <div class="faq-container" id="faqContainer">
+                    <!-- Dynamic FAQ Items generated by JavaScript -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Agent Contact Footer -->
+        <div class="chat-agent-box mb-5">
+            <p class="small text-muted mb-1">التحدث إلى وكيل</p>
+            <p class="fw-bold text-dark mb-0"><i class="fa-regular fa-comments text-warning me-2 fs-5"></i> محادثة فورية: متواجدين من السبت إلى الخميس من الساعة 9 صباحاً حتى 8 مساءً</p>
+        </div>
+
+    </div>
+
+    <!-- JavaScript Script -->
+    <script>
+        // Data structure containing questions and answers for each category
+        const faqData = {
+            pay: [
+                {
+                    q: "تم رفض عملية الدفع. إيه الخطوات اللي ممكن أعملها؟",
+                    a: `لو تم رفض عملية الدفع، تقدر تراجع الخطوات دي لحل المشكلة:
+                        <ul>
+                            <li>تأكد من كتابة بيانات وسيلة الدفع بشكل صحيح.</li>
+                            <li>تأكد من وجود رصيد كافي في بطاقتك الائتمانية أو حسابك البنكي.</li>
+                            <li>تأكد إن مفيش أي قيود على البطاقة، زي الحد الأقصى للمشتريات اليومية.</li>
+                            <li>تأكد إن البطاقة لسه سارية وتاريخها ما انتهاش.</li>
+                        </ul>
+                        ملحوظة: لو لسه المشكلة بPlatform، يرجى الاحتفاظ برسالة الخطأ اللي بتظهر وقت الدفع عشان تقدمها لخدمة عملاء جوميا، وده هيساعدنا نحل المشكلة أسرع.`
+                },
+                {
+                    q: "إيه هي طرق الدفع المتاحة؟",
+                    a: `جوميا بتقدم طرق دفع كتير بتشمل:
+                        <ul>
+                            <li><b>الدفع عند التسليم:</b> تقدر تدفع نقداً عند استلام المنتج أو بطاقة البنك / بالمحفظة الإلكترونية / بالتقسيط باستخدام واحد من البرامج المتاحة (زي فاليو، سهولة، كونتاكت، حالاً).</li>
+                            <li><b>الدفع المسبق:</b> ادفع باستخدام بطاقات بنكية أو التقسيط أو المحافظ الذكية أو فوري.</li>
+                            <li><b>قسائم الشراء.</b></li>
+                        </ul>`
+                },
+                {
+                    q: "حاولت دفع طلبي باستخدام بطاقتي / المحفظة الإلكترونية. تم خصم المبلغ من الحساب، ولكن يظهر أن الطلب لم يتم إتمامه. إيه المشكلة؟ وإزاي استرد المبلغ؟",
+                    a: "في حالة خصم المبلغ ولم يتم تأكيد الطلب، يتم إلغاء المعاملة تلقائياً وإعادة المبلغ إلى حسابك البنكي أو المحفظة في خلال 3 إلى 7 أيام عمل حسب سياسة البنك الخاص بك."
+                },
+                {
+                    q: "إيه هو 'جوميا باي' عند الاستلام؟",
+                    a: "خدمة تسمح لك بالدفع الإلكتروني عبر تطبيق جوميا باي لحظة استلام الشحنة مع المندوب دون الحاجة لاستخدام السيولة النقدية."
+                },
+                {
+                    q: "إيه هي خطوات الدفع بـ 'جوميا باي' وقت الاستلام؟",
+                    a: "عند وصول المندوب، افتح تطبيق جوميا باي، واختر دفع الشحنة عبر مسح كود الـ QR الخاص بالمندوب أو إدخال رقم الطلب والدفع المباشر."
+                }
+            ],
+            vouchers: [
+                {
+                    q: "إزاي أستخدم قسيمة الشراء (الكوبون)؟",
+                    a: "تقدر تفعل قسيمة الشراء في صفحة الدفع قبل إتمام الطلب عن طريق إدخال رمز الكوبون في الخانة المخصصة ثم الضغط على 'تطبيق'."
+                },
+                {
+                    q: "ليه قسيمة الشراء مش شغالة معايا؟",
+                    a: "تأكد من تاريخ صلاحية القسيمة، وأن الحد الأدنى للطلب ينطبق على السلة، وأن القسيمة غير مخصصة لفئة معينة من المنتجات."
+                }
+            ],
+            products: [
+                {
+                    q: "إزاي أتأكد إن المنتج أصلـي؟",
+                    a: "جميع المنتجات المعروضة من المتاجر الرسمية (Official Stores) أو المعلن عنها بضمان جوميا هي منتجات أصلية 100%."
+                }
+            ],
+            shipping: [
+                {
+                    q: "كم تستغرق مدة التوصيل؟",
+                    a: "تستغرق مدة التوصيل عادةً من 2 إلى 5 أيام عمل بناءً على موقعك الجغرافي ونوع الشحنة."
+                }
+            ],
+            orders: [
+                {
+                    q: "إزاي أقدر ألغي طلبي؟",
+                    a: "تقدر تلغي الطلب من خلال الذهاب إلى قسم 'طلباتي' في حسابك واختيار 'إلغاء الطلب' قبل دخول المنتج في مرحلة الشحن."
+                }
+            ],
+            returns: [
+                {
+                    q: "إيه هي سياسة الاسترجاع في جوميا؟",
+                    a: "يمكنك إرجاع أي منتج خلال 14 يوم من تاريخ الاستلام (أو 30 يوم للمنتجات المعيبة) بشرط أن يكون المنتج بحالته الأصلية وغلافه."
+                }
+            ],
+            account: [
+                {
+                    q: "إزاي أغير كلمة السر الخاصة بحسابي؟",
+                    a: "من قائمة 'الحساب'، اختر 'إعدادات الحساب' ثم اضغط على 'تغيير كلمة السر'."
+                }
+            ],
+            sell: [
+                {
+                    q: "إزاي أبدأ أبيع منتجاتي على جوميا؟",
+                    a: "تقدر تسجل كبائع عن طريق زيارة صفحة 'Sell on Jumia' وتعبئة نموذج بيانات الشركة أو النشاط التجاري."
+                }
+            ]
+        };
+
+        // Render FAQs function
+        function renderCategoryFaqs(categoryKey) {
+            const container = document.getElementById('faqContainer');
+            container.innerHTML = '';
+
+            const items = faqData[categoryKey] || [];
+            
+            items.forEach((item, index) => {
+                const faqHTML = `
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleAnswer(this)">
+                            <span class="text-warning fw-bold fs-5 toggle-icon">+</span>
+                            <div>
+                                <span class="badge-category">الدفع</span>
+                                <div>${item.q}</div>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            ${item.a}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += faqHTML;
+            });
+        }
+
+        // Toggle Accordion Answer Function
+        function toggleAnswer(element) {
+            const answerDiv = element.nextElementSibling;
+            const icon = element.querySelector('.toggle-icon');
+            
+            if (answerDiv.style.display === "block") {
+                answerDiv.style.display = "none";
+                icon.textContent = "+";
+            } else {
+                // Hide all other answers first
+                document.querySelectorAll('.faq-answer').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.toggle-icon').forEach(el => el.textContent = '+');
+                
+                // Open clicked answer
+                answerDiv.style.display = "block";
+                icon.textContent = "-";
+            }
+        }
+
+        // Category Switch Listener
+        document.querySelectorAll('.category-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
+                this.classList.add('active');
+                
+                const cat = this.getAttribute('data-category');
+                renderCategoryFaqs(cat);
+            });
+        });
+
+        // Initialize with default category
+        renderCategoryFaqs('pay');
+    </script>
+
+</body>
+<!-- ==================== Jumia Footer Section (Full Width) ==================== -->
+<footer style="direction: rtl !important; background-color: #313133; color: #ffffff; font-family: sans-serif; font-size: 12px; line-height: 1.5; width: 100vw; margin-right: calc(-50vw + 50%); margin-left: calc(-50vw + 50%);">
+
+    <!-- 1. Section Top (Newsletter & App Section) -->
+    <div style="background-color: #282828; padding: 20px 5%; border-bottom: 1px solid #3b3b3b; width: 100%; box-sizing: border-box;">
+        <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 20px;">
+            
+            <!-- Right / Logo & App Download -->
+            <div style="display: flex; align-items: flex-start; gap: 15px;">
+                <div style="display: flex; align-items: center; gap: 5px;">
+                    <span style="font-size: 22px; font-weight: bold; letter-spacing: 1px; color: #ffffff;">JUMIA</span>
+                    <span style="background-color: #f68b1e; color: #ffffff; border-radius: 50%; width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold;">★</span>
+                </div>
+                <div>
+                    <div style="font-weight: bold; font-size: 12px; margin-bottom: 3px;">تنزيل تطبيق جوميا المجاني</div>
+                    <div style="color: #999999; font-size: 11px; margin-bottom: 8px;">احصل على العديد من العروض الحصرية!</div>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="#" style="background: #000; color: #fff; text-decoration: none; padding: 4px 8px; border-radius: 4px; font-size: 10px; border: 1px solid #555;">App Store</a>
+                        <a href="#" style="background: #000; color: #fff; text-decoration: none; padding: 4px 8px; border-radius: 4px; font-size: 10px; border: 1px solid #555;">Google Play</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left / Subscription Form -->
+            <div style="max-width: 600px; flex: 1;">
+                <div style="font-weight: bold; font-size: 12px; margin-bottom: 4px;">هل أنت جديد على جوميا؟</div>
+                <div style="color: #cccccc; font-size: 11px; margin-bottom: 8px;">
+                    اشترك في نشرتنا الإخبارية للحصول على تحديثات حول أحدث عروضنا. يمكنك إلغاء الاشتراك في أي وقت كما هو موضح في سياسة الخصوصية.
+                </div>
+                
+                <div style="color: #f68b1e; font-size: 11px; font-weight: bold; margin-bottom: 6px;">
+                    للاشتراك في نشرتنا الإخبارية يجب عليك أولاً قراءة والموافقة على شروط خدمة جوميا والموافقة على الشروط القانونية
+                </div>
+
+                <form style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <input type="checkbox" id="agree_terms" checked style="accent-color: #f68b1e;">
+                        <label for="agree_terms" style="color: #cccccc; font-size: 10px;">
+                            أوافق على سياسة الخصوصية وملفات تعريف الارتباط الخاصة بـ جوميا، وأعلم أنه يمكنني إلغاء الاشتراك في الرسائل الإخبارية في أي وقت.
+                        </label>
+                    </div>
+
+                    <div style="display: flex; gap: 8px; width: 100%; max-width: 400px;">
+                        <input type="email" placeholder="أدخل بريدك الإلكتروني" style="flex: 1; padding: 6px 10px; border: 1px solid #ccc; border-radius: 2px; font-size: 11px; outline: none; background: #fff; color: #333;">
+                        <button type="submit" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 6px 16px; border-radius: 2px; font-size: 11px; cursor: pointer; font-weight: bold;">اشترك</button>
+                    </div>
+                </form>
+
+                <div style="color: #999999; font-size: 10px; margin-top: 8px;">
+                    يمكنك إلغاء الاشتراك في أي وقت كما هو موضح في سياسة الخصوصية
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 2. Main Links Columns Section -->
+    <div style="padding: 30px 5%; width: 100%; box-sizing: border-box;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; text-align: right;">
+            
+            <!-- العمود 1: تحتاج مساعدة؟ -->
+            <div style="min-width: 160px;">
+                <div style="font-weight: bold; margin-bottom: 10px; font-size: 12px; color: #ffffff;">تحتاج مساعدة؟</div>
+                <ul style="list-style: none; padding: 0; margin: 0; color: #b3b3b3; font-size: 11px; line-height: 1.8;">
+                    <li><a href="#" style="color: inherit; text-decoration: none;">تواصل معنا</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">مركز المساعدة</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">اتصل بنا</a></li>
+                    <li style="margin-top: 10px; font-weight: bold; color: #ffffff;">روابط مفيدة:</li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">كيفية عمل طلب شراء</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">طرق الدفع</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">سياسة الشحن</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">سياسة الاسترجاع</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">سياسة الاستبدال</a></li>
+                    <li><a href="#" style="color: #f68b1e; text-decoration: none;">إرشادات عن المعلومات العامة بالدفع</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">عروض البلاك فرايداي</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">عروض عيد ميلاد جوميا</a></li>
+                </ul>
+            </div>
+
+            <!-- العمود 2: من نحن -->
+            <div style="min-width: 140px;">
+                <div style="font-weight: bold; margin-bottom: 10px; font-size: 12px; color: #ffffff;">من نحن</div>
+                <ul style="list-style: none; padding: 0; margin: 0; color: #b3b3b3; font-size: 11px; line-height: 1.8;">
+                   <li><a href="about.html" style="color: inherit; text-decoration: none;">عن جوميا</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">الشروط والأحكام</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">سياسة الخصوصية</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">سياسة ملفات تعريف الارتباط</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">توصيل مجاني</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">فلاش سيل</a></li>
+                </ul>
+            </div>
+
+            <!-- العمود 3: زوّد مبيعاتك -->
+            <div style="min-width: 160px;">
+                <div style="font-weight: bold; margin-bottom: 10px; font-size: 12px; color: #ffffff;">زوّد مبيعاتك</div>
+                <ul style="list-style: none; padding: 0; margin: 0; color: #b3b3b3; font-size: 11px; line-height: 1.8;">
+                    <li><a href="#" style="color: inherit; text-decoration: none;">بيع على جوميا</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">الخدمة اللوجستية للتاجر (Vendor Hub)</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">ابدأ بيع مع جوميا (JPay)</a></li>
+                </ul>
+            </div>
+
+            <!-- العمود 4: جوميا دولياً -->
+            <div style="min-width: 180px;">
+                <div style="font-weight: bold; margin-bottom: 10px; font-size: 12px; color: #ffffff;">جوميا دولياً</div>
+                <div style="display: flex; gap: 20px;">
+                    <ul style="list-style: none; padding: 0; margin: 0; color: #b3b3b3; font-size: 11px; line-height: 1.8;">
+                        <li><a href="#" style="color: inherit; text-decoration: none;">ساحل العاج</a></li>
+                        <li><a href="#" style="color: inherit; text-decoration: none;">غانا</a></li>
+                        <li><a href="#" style="color: inherit; text-decoration: none;">كينيا</a></li>
+                        <li><a href="#" style="color: inherit; text-decoration: none;">المغرب</a></li>
+                    </ul>
+                    <ul style="list-style: none; padding: 0; margin: 0; color: #b3b3b3; font-size: 11px; line-height: 1.8;">
+                        <li><a href="#" style="color: inherit; text-decoration: none;">نيجيريا</a></li>
+                        <li><a href="#" style="color: inherit; text-decoration: none;">السنغال</a></li>
+                        <li><a href="#" style="color: inherit; text-decoration: none;">أوغندا</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 3. Contact Info Section -->
+        <div style="margin-top: 30px; text-align: center; color: #b3b3b3; font-size: 11px; line-height: 1.6;">
+            <div style="font-weight: bold; color: #ffffff; margin-bottom: 4px;">تواصل معنا</div>
+            <div>الاسم التجاري: <span style="color: #ffffff;">Jumia Egypt</span></div>
+            <div>العنوان: 15 Tasaween El Shamaly St., Sector 2, 5th Compound, New Cairo, Behind Dusk The Office Building, Cairo 271 / 272</div>
+            <div>رقم الهاتف: 19586</div>
+            <div>واتساب: 201011988880+</div>
+        </div>
+
+        <!-- 4. Payment & Social Media Section -->
+        <div style="margin-top: 25px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-top: 1px solid #3b3b3b; padding-top: 15px; gap: 15px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="color: #b3b3b3; font-size: 11px;">طرق الدفع:</span>
+                <span style="font-size: 10px; color: #ccc; border: 1px solid #666; padding: 2px 4px; border-radius: 2px;">fawry</span>
+                <span style="font-size: 10px; color: #ccc; border: 1px solid #666; padding: 2px 4px; border-radius: 2px;">VISA</span>
+                <span style="font-size: 10px; color: #ccc; border: 1px solid #666; padding: 2px 4px; border-radius: 2px;">MasterCard</span>
+                <span style="font-size: 10px; color: #ccc; border: 1px solid #666; padding: 2px 4px; border-radius: 2px;">Cash</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="color: #b3b3b3; font-size: 11px;">تابعونا على:</span>
+                <a href="#" style="color: #ccc; text-decoration: none;">🎵</a>
+                <a href="#" style="color: #ccc; text-decoration: none;">📸</a>
+                <a href="#" style="color: #ccc; text-decoration: none;">▶</a>
+                <a href="#" style="color: #ccc; text-decoration: none;">𝕏</a>
+                <a href="#" style="color: #ccc; text-decoration: none;">f</a>
+            </div>
+        </div>
+
+        <!-- 5. Brands List -->
+        <div style="margin-top: 25px; border-top: 1px solid #3b3b3b; padding-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; color: #888888; font-size: 10px;">
+            <span>Solary</span>
+            <span>TORNADO</span>
+            <span>XIAOMI</span>
+            <span>OPPO</span>
+            <span>Samsung</span>
+            <span>SHEIN</span>
+            <span>Masary</span>
+            <span>NIVEA</span>
+            <span>Nestle</span>
+            <span>LC Waikiki</span>
+            <span>Lenovo</span>
+            <span>Maybelline New York</span>
+            <span>HP</span>
+            <span>Ikea</span>
+            <span>KOTY</span>
+            <span>L'Oreal Paris</span>
+            <span>DeFacto</span>
+            <span>Dior</span>
+            <span>Fresh</span>
+            <span>Carrier</span>
+            <span>Apple</span>
+            <span>Braun</span>
+            <span>Casio</span>
+            <span>Goldi</span>
+            <span>Aditi</span>
+            <span>ADIDAS</span>
+            <span>American Eagle</span>
+            <span>Andora</span>
+        </div>
+
+        <!-- 6. Bottom Copyright & Language Selection -->
+        <div style="margin-top: 20px; border-top: 1px solid #3b3b3b; padding-top: 15px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #888888;">
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <a href="#" style="color: #888888; text-decoration: none;">English</a>
+                <span>|</span>
+                <a href="#" style="color: #ffffff; font-weight: bold; text-decoration: none;">عربي</a>
+            </div>
+            <div>
+                <a href="#" style="color: #888888; text-decoration: none;">Privacy</a>
+            </div>
+        </div>
+
+    </div>
+
+</footer>
+</html>
